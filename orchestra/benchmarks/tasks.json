@@ -1,0 +1,8 @@
+[
+  {
+    "id": "symbolic-counterexample-v1",
+    "name": "Symbolic verification and counterexample coverage",
+    "fixture": {"description": "Measure verified algebra, counterexamples, provenance, reproducibility, cost, and intervention from a persisted run."},
+    "metrics_schema": ["correct_counterexamples", "algebra_verified", "formal_proof_success", "repeated_dead_ends", "reproducibility", "evidence_coverage", "provenance_completeness", "cost_micros", "latency_ms", "revisions", "human_interventions"]
+  }
+]

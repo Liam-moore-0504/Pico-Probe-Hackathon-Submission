@@ -1,0 +1,112 @@
+{
+  "runs": [
+    {
+      "title": "Random semicircle threshold",
+      "question": "For n independent uniform points on the unit circle, how does the probability that all points lie in some semicircle vary with n, and can a reproducible simulation recover the exact law?",
+      "project_id": "4774337d-b7f2-486b-b096-e193c901b3d7",
+      "run_id": "46ce589b-4a33-46db-82bd-25e743279daf",
+      "job_status": "completed",
+      "job_error": null,
+      "step_statuses": {
+        "design": "completed",
+        "simulate": "completed",
+        "interpret": "completed"
+      },
+      "event_count": 37,
+      "message_count": 5,
+      "published": {
+        "snapshot_id": "snap_95ec1e7bd49d4bc8962bb2b52db684cd",
+        "version": 1,
+        "integrity_hash": "1bb7ced4c367e6543fc23f42b3cdb9e50e1899640739014fbd31e94296024b9c"
+      }
+    },
+    {
+      "title": "Coprime-pair density",
+      "question": "For uniformly sampled integer pairs (a,b) in {1,...,N}^2, how quickly does the observed coprime proportion approach 6/pi^2 as N grows?",
+      "project_id": "3375851f-c410-47ef-87c4-35d0ad1f499d",
+      "run_id": "01462b01-0272-41cf-b798-5b728b1df046",
+      "job_status": "completed",
+      "job_error": null,
+      "step_statuses": {
+        "design": "completed",
+        "simulate": "completed",
+        "interpret": "completed"
+      },
+      "event_count": 37,
+      "message_count": 5,
+      "published": {
+        "snapshot_id": "snap_8a7f087214544e14ba72517d778bdf77",
+        "version": 1,
+        "integrity_hash": "3c7425b92115c0bb85269bb2c57857d8ef9240135f98e83c7b81a2902e7a4729"
+      }
+    },
+    {
+      "title": "Fixed points of random permutations",
+      "question": "How rapidly does the distribution of fixed points of a uniformly random permutation converge to Poisson(1), and which finite-n statistics reveal the leading discrepancy?",
+      "project_id": "f1eda002-bd5a-41a6-a5b8-c653d936dc73",
+      "run_id": "3c1e22b8-ce89-4801-a09a-c329ffeb49ae",
+      "job_status": "completed",
+      "job_error": null,
+      "step_statuses": {
+        "design": "completed",
+        "simulate": "completed",
+        "interpret": "completed"
+      },
+      "event_count": 37,
+      "message_count": 5,
+      "published": {
+        "snapshot_id": "snap_771cacf0379a41ff88e2372e0ea4740f",
+        "version": 1,
+        "integrity_hash": "c2b39e2575360eed98cb3dd8a5d90e186aca1cd61bd668bc6f6589b4b6f9ba1a"
+      }
+    }
+  ],
+  "public_library": {
+    "count": 3,
+    "projects": [
+      {
+        "id": "f1eda002-bd5a-41a6-a5b8-c653d936dc73",
+        "title": "Fixed points of random permutations",
+        "question": "How rapidly does the distribution of fixed points of a uniformly random permutation converge to Poisson(1), and which finite-n statistics reveal the leading discrepancy?",
+        "abstract": "Automated end-to-end rehearsal validation of typed AI-to-Monte-Carlo-to-interpretation flow.",
+        "tags": [
+          "validation",
+          "mathematics",
+          "rehearsal"
+        ],
+        "created_at": "2026-07-20T15:22:05.942334+00:00",
+        "updated_at": "2026-07-20T15:22:06.394442+00:00",
+        "snapshot_id": "snap_771cacf0379a41ff88e2372e0ea4740f"
+      },
+      {
+        "id": "3375851f-c410-47ef-87c4-35d0ad1f499d",
+        "title": "Coprime-pair density",
+        "question": "For uniformly sampled integer pairs (a,b) in {1,...,N}^2, how quickly does the observed coprime proportion approach 6/pi^2 as N grows?",
+        "abstract": "Automated end-to-end rehearsal validation of typed AI-to-Monte-Carlo-to-interpretation flow.",
+        "tags": [
+          "validation",
+          "mathematics",
+          "rehearsal"
+        ],
+        "created_at": "2026-07-20T15:22:05.509987+00:00",
+        "updated_at": "2026-07-20T15:22:05.928010+00:00",
+        "snapshot_id": "snap_8a7f087214544e14ba72517d778bdf77"
+      },
+      {
+        "id": "4774337d-b7f2-486b-b096-e193c901b3d7",
+        "title": "Random semicircle threshold",
+        "question": "For n independent uniform points on the unit circle, how does the probability that all points lie in some semicircle vary with n, and can a reproducible simulation recover the exact law?",
+        "abstract": "Automated end-to-end rehearsal validation of typed AI-to-Monte-Carlo-to-interpretation flow.",
+        "tags": [
+          "validation",
+          "mathematics",
+          "rehearsal"
+        ],
+        "created_at": "2026-07-20T15:22:04.935950+00:00",
+        "updated_at": "2026-07-20T15:22:05.499167+00:00",
+        "snapshot_id": "snap_95ec1e7bd49d4bc8962bb2b52db684cd"
+      }
+    ]
+  },
+  "note": "Published only inside an isolated local validation database, not to the user\u2019s running installation or internet deployment."
+}

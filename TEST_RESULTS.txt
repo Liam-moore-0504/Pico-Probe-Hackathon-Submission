@@ -1,0 +1,28 @@
+Pico Probe 3.2 verification — 2026-07-21
+
+Backend pytest collection: 42 tests
+Backend result: 41 passed, 1 optional live Ollama test skipped
+OpenAI BYOK end-to-end mocked transport: passed
+Ruff: passed
+MyPy CI profile: passed
+Frontend ESLint: passed
+Frontend Vite production build: passed
+npm production audit: 0 known vulnerabilities
+Bandit high-severity scan: passed
+Python dependency audit: no known vulnerabilities
+Docker demo image and readiness health check: passed
+Python 3.13 containerized backend suite with read-only source mount: 41 passed, 1 optional Ollama test skipped
+
+New 3.2 verification:
+- Ollama status endpoint: covered
+- Honest unavailable behavior: covered
+- Backend-local Ollama start endpoint: covered
+- Ollama configuration/pull/test API contract: covered by existing integration tests
+- Settings & Providers Ollama interface: linted and production-built
+- Canonical PicoPortMessage lineage: covered
+- Compatible fan-out and heterogeneous multi-output compilation: covered
+- AI generator -> Monte Carlo -> interpreter rehearsal flow: covered
+- Encrypted OpenAI BYOK -> compiled gpt-5.6 live-mode path -> validated messages/events/replay: covered with a non-networked fake transport
+- Clean database -> bundled signed-monomial public listing -> integrity-checked sanitized snapshot: covered
+
+The optional live Ollama test requires a running local Ollama service and installed model. The project owner separately confirmed a live GPT-5.6 test using a user-provided key; no real provider key is stored in the repository or automated fixtures.

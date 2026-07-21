@@ -1,0 +1,58 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: orchestra
+      POSTGRES_USER: orchestra
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes: ["postgres-data:/var/lib/postgresql/data"]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U orchestra"], interval: 5s, timeout: 3s, retries: 20}
+  redis:
+    image: redis:8-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: ["redis-data:/data"]
+    healthcheck: {test: ["CMD", "redis-cli", "ping"], interval: 5s, timeout: 3s, retries: 20}
+  api:
+    build: .
+    env_file: [.env]
+    command: ["sh", "-c", "alembic upgrade head && python -m uvicorn orchestra.api.app:app --host 0.0.0.0 --port 8000"]
+    ports: ["${ORCHESTRA_HOST_PORT:-8000}:8000"]
+    environment: &app-env
+      ORCHESTRA_ENV: production
+      ORCHESTRA_DATABASE_URL: postgresql+psycopg://orchestra:${POSTGRES_PASSWORD}@postgres:5432/orchestra
+      ORCHESTRA_AUTO_MIGRATE: "false"
+      ORCHESTRA_REDIS_URL: redis://redis:6379/0
+      ORCHESTRA_JWT_SECRET: ${ORCHESTRA_JWT_SECRET:?Set ORCHESTRA_JWT_SECRET}
+      ORCHESTRA_VAULT_KEY: ${ORCHESTRA_VAULT_KEY:?Set ORCHESTRA_VAULT_KEY}
+      ORCHESTRA_SANDBOX_BACKEND: docker
+      ORCHESTRA_PUBLIC_BASE_URL: ${ORCHESTRA_PUBLIC_BASE_URL:-http://127.0.0.1:8000}
+      ORCHESTRA_ALLOWED_HOSTS: ${ORCHESTRA_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+    volumes: ["artifact-data:/app/orchestra_artifacts", "plugin-data:/app/orchestra_plugin_packages", "/var/run/docker.sock:/var/run/docker.sock"]
+    group_add: ["${DOCKER_GID:-0}"]
+    read_only: true
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=128m"]
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+    depends_on: {postgres: {condition: service_healthy}, redis: {condition: service_healthy}}
+    healthcheck: {test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"], interval: 10s, timeout: 5s, retries: 12}
+  worker:
+    build: .
+    env_file: [.env]
+    command: ["python", "-m", "orchestra.kernel.worker"]
+    environment: *app-env
+    volumes: ["artifact-data:/app/orchestra_artifacts", "plugin-data:/app/orchestra_plugin_packages", "/var/run/docker.sock:/var/run/docker.sock"]
+    group_add: ["${DOCKER_GID:-0}"]
+    read_only: true
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=128m"]
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+    depends_on: {api: {condition: service_healthy}}
+volumes:
+  postgres-data: {}
+  redis-data: {}
+  artifact-data: {}
+  plugin-data: {}

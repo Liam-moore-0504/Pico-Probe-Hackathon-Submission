@@ -1,0 +1,25 @@
+services:
+  picoprobe:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      ORCHESTRA_ENV: development
+      ORCHESTRA_DATABASE_PATH: /home/orchestra/picoprobe.db
+      ORCHESTRA_AUTO_MIGRATE: "true"
+      ORCHESTRA_JWT_SECRET: picoprobe-build-week-local-demo-secret-change-before-public-launch
+      # Local competition-only vault key. Replace with a managed secret before any public deployment.
+      ORCHESTRA_VAULT_KEY: CvMdlfPp90Q61DSG6Ek0AwsK4unCwsKGjJkgWjoYSs4=
+      ORCHESTRA_ALLOWED_HOSTS: localhost,127.0.0.1,testserver
+      ORCHESTRA_PUBLIC_BASE_URL: http://127.0.0.1:8000
+      ORCHESTRA_SANDBOX_BACKEND: subprocess
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OLLAMA_BASE_URL: http://host.docker.internal:11434/v1
+    volumes: ["picoprobe-demo-data:/home/orchestra"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+
+volumes:
+  picoprobe-demo-data: {}

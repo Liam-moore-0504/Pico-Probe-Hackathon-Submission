@@ -1,0 +1,23 @@
+name: backend
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.13"}
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check orchestra tests
+      - run: mypy orchestra --ignore-missing-imports --allow-untyped-defs --allow-untyped-globals --disable-error-code=assignment --disable-error-code=arg-type --disable-error-code=union-attr --disable-error-code=index --disable-error-code=attr-defined --disable-error-code=return-value --disable-error-code=operator --disable-error-code=misc --disable-error-code=call-overload --disable-error-code=var-annotated
+      - run: pytest --junitxml=test-results.xml
+      - run: bandit -q -r orchestra -x tests -lll
+      - run: pip-audit -r requirements.txt
+      - uses: actions/setup-node@v4
+        with: {node-version: "22", cache: "npm", cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
