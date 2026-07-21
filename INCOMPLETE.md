@@ -2,16 +2,20 @@
 
 The private Build Week submission does not require public hosting, payments, OAuth, SMTP, cloud secrets, or a production domain. Those capabilities remain preserved in the separate `PicoProbe_Public_Launch_Foundation` folder.
 
-## Required before submission
+## Submission logistics remaining
 
 - [x] Record one real local Ollama run through the compiled execution envelope. `llama3.1:8b` completed the generator → canonical message → Monte Carlo path on July 20, 2026 with zero provider cost.
-- [ ] Record an intentionally malformed real-provider response exercising the repair branch. The same-provider live/local repair path, artifact preservation, rejection behavior, and structured validation are implemented; the successful live Ollama run did not naturally emit malformed output.
-- [ ] Add browser-driven UI tests for every editor and Discovery action; backend contract tests and frontend lint/build currently pass. The Ollama settings interface is now wired to status/configure/start/pull/test endpoints.
-- [ ] Test the repository from a fresh clone using `docker-compose.demo.yml`.
+- [x] Test the repository from a fresh clone using `docker-compose.demo.yml`.
 - [x] Run the final backend, frontend, dependency, secret, and Docker health checks.
+- [x] Create the private GitHub repository.
 - [ ] Record the demo video using `docs/DEMO_SCRIPT.md`.
-- [ ] Create the private GitHub repository and grant the access required by the official Devpost rules.
+- [ ] Grant the repository access required by the official Devpost rules.
 - [ ] Upload the final description, screenshots, video, and repository link to Devpost.
+
+## Non-blocking future validation
+
+- Record an intentionally malformed real-provider response exercising the repair branch. The same-provider live/local repair path, artifact preservation, rejection behavior, and structured validation are implemented and covered deterministically; the successful live Ollama run did not naturally emit malformed output.
+- Add broader browser-driven automation for every editor and Discovery action. Backend contract tests and frontend lint/build pass, and the Ollama settings interface is wired to status/configure/start/pull/test endpoints.
 
 ## Intentionally postponed
 

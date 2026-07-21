@@ -28,8 +28,9 @@ The repository's configured MyPy CI profile passes. Fully strict MyPy remains a 
 ## Submission gates
 
 - [x] One live GPT‑5.6 run with a user-provided key completed by the project owner
-- [ ] Fresh-clone setup verified
-- [ ] Private GitHub repository created and reviewer access confirmed
+- [x] Fresh-clone setup verified
+- [x] Private GitHub repository created
+- [ ] Reviewer access confirmed
 - [ ] Demo video recorded
 - [ ] Screenshots exported
 - [ ] Devpost copy finalized
