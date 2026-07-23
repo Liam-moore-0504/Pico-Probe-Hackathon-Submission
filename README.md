@@ -214,14 +214,6 @@ Pico Probe is deliberately precise about what its checks mean:
 - A Claim Passport is an audit record, not a certificate of truth.
 - A guided rehearsal demonstrates the research mechanism; its novelty and literature priority still require scholarly review.
 
-## Codex and Build Week
-
-Before Build Week, the project was an experimental multi-model mathematical-research pipeline. During the submission period it was substantially extended into the unified Pico Probe experience: typed port messages and execution envelopes, assurance-aware compilation, persistent graph and replay, Negative Knowledge, provider and plugin boundaries, human checkpoints, Claim Passports, the public/private libraries, the guided investigation, and the integrated frontend.
-
-Codex served as the principal engineering collaborator. It mapped the inherited codebase, translated research-integrity requirements into data models and execution contracts, connected React workflows to FastAPI services, diagnosed authentication and white-screen failures, implemented and hardened provider/tool paths, added regression coverage, and repeatedly audited packaging, security, Docker behavior, and submission readiness. The human creator supplied the original research problem, anti-hallucination and autonomy principles, mathematical use cases, product identity, interface direction, and final architectural and submission decisions.
-
-See [Pico Probe before and after Build Week](docs/BUILD_WEEK_BEFORE_AFTER.md) for the concise change record.
-
 ## Repository map
 
 - `frontend/` — competition interface, tutorial, editors, libraries, and settings
