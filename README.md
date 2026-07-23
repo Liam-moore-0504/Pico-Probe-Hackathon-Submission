@@ -202,6 +202,5 @@ Pico Probe is deliberately precise about what its checks mean:
 - Public hosting, live payments, production OAuth/SMTP, and public marketplace activation are intentionally outside the private Build Week demo.
 - Transactions are disabled in the competition interface.
 - Arbitrary unsigned third-party plugin execution is not exposed.
-- The internal Python package remains named `orchestra` for compatibility; all product-facing identity is Pico Probe.
 
 The long-term goal is not to replace researchers. It is to provide a research environment where every idea, computation, proof attempt, counterexample, failed route, verification result, and human decision becomes part of an inspectable and reusable scientific record.
