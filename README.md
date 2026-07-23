@@ -134,36 +134,6 @@ The raw key is encrypted before persistence, is never returned by the API, and i
 
 For local inference, use the separate **Configure local Ollama** panel. Ollama does not accept an API key or device key. See [Ollama setup](docs/OLLAMA_SETUP.md).
 
-## Live GPT-5.6 competition demo
-
-This route needs only an OpenAI API key entered through **Settings & API keys**:
-
-1. Create a new investigation in **Private library** and enter a mathematical research question.
-2. Review and save its **Epistemic contract**.
-3. In **Pipeline editor**, create an OpenAI-only template such as **Geometric Probability Investigation**, or create a blank pipeline and add AI nodes.
-4. Select each AI node and confirm `Provider: openai` and `Model: gpt-5.6`.
-5. Add or retain an adversarial node and a final researcher checkpoint. Add SymPy, Lean, Monte Carlo, or Python verification where appropriate.
-6. Save and compile the pipeline.
-7. Open **Run research**, choose the saved pipeline, select **AI-led — live providers with human gates**, and select **Launch governed run**.
-8. At a human checkpoint, enter the requested researcher contribution and resume.
-9. Inspect provider/model provenance and usage in the run, the resulting graph objects, Claim Passport, and Replay.
-
-Pico Probe checks provider readiness before a live run and explains which credential is missing rather than failing silently. A mocked end-to-end regression test covers the same encrypted-BYOK-to-compiled-`gpt-5.6` path without making a billable request; the project owner also completed a real key-backed GPT-5.6 validation.
-
-### Use another model instead
-
-The workflow is identical:
-
-1. Store that provider's key in **Settings & API keys**, or configure Ollama locally.
-2. Open **Pipeline editor**.
-3. Add or select an AI node, choose the provider, and enter a model identifier supported by that provider.
-4. Save and compile the pipeline.
-5. Choose **AI-led** for cloud/local model execution, **Rehearsal** for deterministic fixtures, or **Human-led** to turn AI nodes into researcher checkpoints.
-
-Different nodes may use different providers. The `Independent Route Election + Verification` template shows OpenAI, Anthropic, and Gemini producing separate routes before comparison, SymPy/Lean checks, and final human authority. To run that exact template live, configure every provider it references or edit the nodes to providers you have available.
-
-Environment variables such as `OPENAI_API_KEY` are also supported for a deployment-owned platform key, but UI-managed BYOK is clearer for the local competition demo. Never commit a key.
-
 ## Public and private research libraries
 
 - **Private library** contains the signed-in researcher's editable investigations.
